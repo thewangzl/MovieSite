@@ -21,7 +21,7 @@ print movie_ids
 
 def add_movie(data):
 	movie = json.loads(data)
-	db.insert('movie',id=int(movie['id']),title=movie['title'],origin=movie['original_title'],url=movie['alt'],rating=movie['rating']['average'],image=movie['images']['large'],directors=','.join([d['name'] for d in movie['casts']]),year=movie['year'],genres=','.join(movie['genres']),countries=','.join(movie['countries']),summary=movie['summary'],)
+	db.insert('movie',id=int(movie['id']),title=movie['title'],origin=movie['original_title'],url=movie['alt'],rating=movie['rating']['average'],image=movie['images']['large'],directors=','.join([d['name'] for d in movie['directors']]),casts=','.join([d['name'] for d in movie['casts']]),year=movie['year'],genres=','.join(movie['genres']),countries=','.join(movie['countries']),summary=movie['summary'],)
 	print movie['title']
 
 count = 0

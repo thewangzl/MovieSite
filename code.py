@@ -8,7 +8,9 @@ db = web.database(dbn='sqlite',db='MovieSite.db')
 
 urls = (
 	'/','index',
-        '/movie/(\d+)','movie'
+        '/movie/(.*)','movie',
+	'/cast/(.*)','cast',
+	'/director/(.*)','director'
 )
 
 class index:
@@ -27,6 +29,18 @@ class movie:
 #		movie = db.select('movie',where=condition,vars=locals())[0]
 		movie = db.select('movie',where='id=$int(movie_id)',vars=locals())[0]
 		return render.movie(movie)
+
+class cast :
+	def GET(self,cast_name):
+		condition = r'casts like "%' + cast_name + r'%"'
+		movies = db.select('movie',where = condition)
+		return render.index(movies)
+
+class director:
+	def GET(self,director_name):
+		condition = r'directors like "%' + director_name + r'%"'
+		movies = db.select('movie',where = condition)
+		return render.index(movies)
 
 
 if __name__ == "__main__":
