@@ -9,10 +9,5 @@ $def with(movies)
 <p>影片列表:</p>
 $for movie in movies:
 	<li>
-	$movie['title']</a>,$movie['year'],$movie['country']
-	<br />
-	$movie['abstract']
-	<br />
-	<br />
 	<a href="movie/$movie['id']">$movie['title']</a>
 	</li>
