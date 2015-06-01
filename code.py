@@ -2,7 +2,6 @@
 
 import web
 
-#render = web.template.render('templates/')
 render = web.template.render('templates/')
 db = web.database(dbn='sqlite',db='MovieSite.db')
 
